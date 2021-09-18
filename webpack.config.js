@@ -7,11 +7,11 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-    entry: ['./src/App.js'],
+    entry: ['./src/App.jsx'],
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: [
                     {

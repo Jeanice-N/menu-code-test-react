@@ -4,6 +4,7 @@ const { graphqlHTTP } = require('express-graphql');
 
 const menu = require('./static/menu-data.json');
 const gqlSchema = require('./static/gql-schema');
+const cors = require("cors");
 
 const port = 3000;
 const app = express();
@@ -11,6 +12,8 @@ const app = express();
 app.get('/api/v1/menu', (req, res) => {
     res.json(menu);
 });
+
+app.use(cors());
 
 app.use(
     '/graphql',
