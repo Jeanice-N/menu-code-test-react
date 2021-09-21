@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CardContent, CardHeader, FormHelperText } from "@mui/material";
-import { getCoursesLoading, getCourseTitles, hasInsufficientMealError } from "./menuUtils";
+import { getCoursesLoading, getCourseTitles, hasInsufficientMealError } from "../menuUtils";
 import MenuSelect from "./MenuSelect.jsx";
-import { CardStyled } from "./menuStyles";
+import { CardStyled } from "../menuStyles";
 
 export default function Diner({loading, menu, diner, trySubmit, meals, setMeals, total, setTotal}){
     const [mealError, setMealError] = useState();

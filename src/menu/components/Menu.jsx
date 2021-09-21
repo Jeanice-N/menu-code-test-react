@@ -2,8 +2,8 @@ import { useQuery } from "@apollo/client";
 import { CardActions, CardContent, Container, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Diner from "./Diner.jsx";
-import { GET_MENU } from "./menu.queries";
-import { CardStyled, OTHeader, SubmitButton } from "./menuStyles.js";
+import { GET_MENU } from "../menu.queries";
+import { CardStyled, OTHeader, SubmitButton } from "../menuStyles.js";
 
 export default function Menu(){
     const DINERS = ["Diner 1", "Diner 2"];

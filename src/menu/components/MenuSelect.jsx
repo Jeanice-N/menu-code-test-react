@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FormHelperText, InputLabel, MenuItem, Select } from "@mui/material";
-import { MenuSelectStyled } from "./menuStyles";
-import { getUpdatedMeals, getErrorMessage, isMealComboInvalid } from "./menuUtils";
+import { MenuSelectStyled } from "../menuStyles";
+import { getUpdatedMeals, getErrorMessage, isMealComboInvalid } from "../menuUtils";
 
 export default function MenuSelect({items, title, trySubmit, diner, meals, setMeals, total, setTotal}) {
     const [value, setValue] = useState("");

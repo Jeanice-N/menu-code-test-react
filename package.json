@@ -6,7 +6,12 @@
   "scripts": {
     "start-server": "node src/server/index.js",
     "start-app": "webpack-dev-server --mode development --open",
-    "start": "concurrently \"npm:start-server\" \"npm:start-app\""
+    "start": "concurrently \"npm:start-server\" \"npm:start-app\"",
+    "test": "jest --watchAll"
+  },
+  "jest": {
+    "resetMocks": false,
+    "verbose": true
   },
   "author": "OpenTable",
   "license": "ISC",
@@ -27,11 +32,18 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@types/jest": "^27.0.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.2.1",
     "babel-loader": "^8.0.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.7.0",
     "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -42,6 +54,7 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.2.1",
     "prettier": "^2.4.0",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",

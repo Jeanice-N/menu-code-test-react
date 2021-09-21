@@ -1,9 +1,9 @@
 import React from "react";
-import MenuSkeleton from "./MenuSkeleton.jsx";
+import MenuSkeleton from "./components/MenuSkeleton.jsx";
 
-const CHEESECAKE_ID = "11";
-const PRAWN_COCKTAIL_ID = "4";
-const SALMON_FILLET_ID = "7";
+export const CHEESECAKE_ID = "11";
+export const PRAWN_COCKTAIL_ID = "4";
+export const SALMON_FILLET_ID = "7";
 
 export const getCourseTitles = (menu = []) => {
     const courseTitles = Object.keys(menu);
