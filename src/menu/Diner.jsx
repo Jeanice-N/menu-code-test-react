@@ -1,15 +1,21 @@
-import React from "react";
-import { Card, CardContent, CardHeader } from "@mui/material";
-import { getCoursesLoading, getCourseTitles } from "./menuUtils";
+import React, { useEffect, useState } from "react";
+import { CardContent, CardHeader, FormHelperText } from "@mui/material";
+import { getCoursesLoading, getCourseTitles, hasInsufficientMealError } from "./menuUtils";
 import MenuSelect from "./MenuSelect.jsx";
 import { CardStyled } from "./menuStyles";
 
-export default function Diner({loading, menu, diner, trySubmit, meals, setMeals, errors, setErrors, total, setTotal}){
+export default function Diner({loading, menu, diner, trySubmit, meals, setMeals, total, setTotal}){
+    const [mealError, setMealError] = useState();
+
+    useEffect(() => {
+        setMealError(hasInsufficientMealError(meals, diner, trySubmit));
+    }, [setMealError, hasInsufficientMealError, meals, diner, trySubmit]);
 
     return (
         <CardStyled variant="outlined">
         <CardHeader title={diner}/>
         <CardContent>
+        {mealError && (<FormHelperText error>{mealError}</FormHelperText>)}
             {loading ? getCoursesLoading() : (
                 getCourseTitles(menu).map(title => (
                     <MenuSelect 
@@ -20,8 +26,6 @@ export default function Diner({loading, menu, diner, trySubmit, meals, setMeals,
                         meals={meals}
                         setMeals={setMeals}
                         diner={diner}
-                        setErrors={setErrors}
-                        errors={errors}
                         total={total}
                         setTotal={setTotal}
                         />

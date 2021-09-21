@@ -1,10 +1,9 @@
 import { useQuery } from "@apollo/client";
-import { Button, Card, CardActions, CardContent, Container, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { CardActions, CardContent, Container, Typography } from "@mui/material";
+import React, { useState } from "react";
 import Diner from "./Diner.jsx";
 import { GET_MENU } from "./menu.queries";
 import { CardStyled, OTHeader, SubmitButton } from "./menuStyles.js";
-import { isMealComboInvalid } from "./menuUtils.js";
 
 export default function Menu(){
     const DINERS = ["Diner 1", "Diner 2"];
@@ -12,11 +11,6 @@ export default function Menu(){
     const [total, setTotal] = useState(0);
     const [trySubmit, setTrySubmit] = useState(false);
     const [meals, setMeals] = useState({});
-    const [errors, setErrors] = useState("");
-
-    useEffect(() => {
-        setErrors(isMealComboInvalid(meals));
-    }, [meals]);
 
     const handleSubmit = () => {
         setTrySubmit(true);
@@ -35,8 +29,6 @@ export default function Menu(){
             trySubmit={trySubmit}
             meals={meals}
             setMeals={setMeals}
-            errors={errors}
-            setErrors={setErrors} 
             total={total}
             setTotal={setTotal}
             />

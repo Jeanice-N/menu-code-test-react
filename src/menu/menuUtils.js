@@ -80,17 +80,20 @@ export const getUpdatedMeals = (meals, diner, currentDish, newDish) => {
         ...meals,
         [diner]: meals[diner]
     };
-}
+};
 
 export const getErrorMessage = (errors, value, diner) => {
     if(!errors) return false;
-    
+
     const mealComboError = typeof errors[diner] === "object" && errors[diner] !== null;
 
-    if (mealComboError) return errors[diner][value]
+    if (mealComboError) return errors[diner][value];
 
     return errors[value];
+};
+
+export const hasInsufficientMealError = (meals, diner, trySubmit) => {
+    const dishesCount = meals[diner]?.length; 
+    const isInsufficient = trySubmit && (!dishesCount || dishesCount < 2);
+    return isInsufficient && "At least two courses are required"; 
 }
-
-
-

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FormHelperText, InputLabel, MenuItem, Select } from "@mui/material";
 import { MenuSelectStyled } from "./menuStyles";
-import { getUpdatedMeals, getErrorMessage } from "./menuUtils";
+import { getUpdatedMeals, getErrorMessage, isMealComboInvalid } from "./menuUtils";
 
-export default function MenuSelect({items, title, trySubmit, diner, meals, setMeals, errors, total, setTotal}) {
+export default function MenuSelect({items, title, trySubmit, diner, meals, setMeals, total, setTotal}) {
     const [value, setValue] = useState("");
+    const [errors, setErrors] = useState("");
     const [fieldError, setFieldError] = useState(false);
     const isRequired = title === "mains";
     const label = isRequired ? `${title} *` : title;
@@ -14,6 +15,11 @@ export default function MenuSelect({items, title, trySubmit, diner, meals, setMe
             setFieldError("A main is required");
         }
     }, [isRequired, value, trySubmit, setFieldError]);
+
+
+    useEffect(() => {
+        setErrors(isMealComboInvalid(meals));
+    }, [meals, setErrors, isMealComboInvalid]);
 
     useEffect(() => {
         setFieldError(getErrorMessage(errors, value, diner));
